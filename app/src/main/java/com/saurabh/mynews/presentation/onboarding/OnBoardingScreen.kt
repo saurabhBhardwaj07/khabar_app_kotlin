@@ -10,17 +10,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.saurabh.mynews.presentation.Dimens.MediumPadding2
 import com.saurabh.mynews.presentation.common.NewsButton
 import com.saurabh.mynews.presentation.common.NewsTextButton
 import com.saurabh.mynews.presentation.onboarding.components.OnBoardingPage
 import com.saurabh.mynews.presentation.onboarding.components.PageIndicator
+import com.saurabh.mynews.ui.theme.NewsAppTheme
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(
+    onEvent: (OnBoardingEvent) -> Unit
+) {
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
             pages.size
@@ -63,8 +67,8 @@ fun OnBoardingScreen() {
                 }
             }
             NewsButton(text = buttonState.value[1]) {
-                if (pagerState.currentPage == 3) {
-                    //Navigation
+                if (pagerState.currentPage == 2) {
+                   onEvent(OnBoardingEvent.SaveAppEntry)
                 } else {
                     scope.launch {
                         pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
@@ -75,3 +79,5 @@ fun OnBoardingScreen() {
         Spacer(modifier = Modifier.height(20.dp))
     }
 }
+
+
