@@ -1,7 +1,6 @@
-package com.loc.newsapp.presentation.home
-
+package com.saurabh.mynews.presentation.home
 
 data class HomeState(
     val newsTicker: String = "",
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = false
 )

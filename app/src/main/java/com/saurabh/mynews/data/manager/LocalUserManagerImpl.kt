@@ -1,5 +1,4 @@
-package com.saurabh.mynews.data
-
+package com.saurabh.mynews.data.manager
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -28,7 +27,8 @@ class LocalUserManagerImpl(
 }
 
 
-private val readOnlyProperty = preferencesDataStore(name = USER_SETTINGS)
+private val readOnlyProperty =  preferencesDataStore(name = USER_SETTINGS)
+
 val Context.dataStore: DataStore<Preferences> by readOnlyProperty
 private object PreferenceKeys {
     val APP_ENTRY = booleanPreferencesKey(Constants.APP_ENTRY)

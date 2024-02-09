@@ -2,9 +2,7 @@ package com.saurabh.mynews.data.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.saurabh.mynews.data.remote.dto.NewsApi
 import com.saurabh.mynews.domain.model.Article
-import retrofit2.http.Query
 
 class SearchNewsPagingSource(
     private val api: NewsApi,
@@ -36,5 +34,4 @@ class SearchNewsPagingSource(
             LoadResult.Error(throwable = e)
         }
     }
-
 }

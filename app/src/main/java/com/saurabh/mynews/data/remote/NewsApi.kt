@@ -1,5 +1,6 @@
-package com.saurabh.mynews.data.remote.dto
+package com.saurabh.mynews.data.remote
 
+import com.saurabh.mynews.data.remote.dto.NewsResponse
 import com.saurabh.mynews.util.Constants.API_KEY
 import retrofit2.http.GET
 import retrofit2.http.Query

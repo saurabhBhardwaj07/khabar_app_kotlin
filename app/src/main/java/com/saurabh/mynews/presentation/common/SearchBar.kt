@@ -1,19 +1,25 @@
 package com.saurabh.mynews.presentation.common
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.dp
 import com.saurabh.mynews.R
 import com.saurabh.mynews.presentation.Dimens.IconSize
 
@@ -42,7 +48,9 @@ fun SearchBar(
 
     Box(modifier = modifier) {
         TextField(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .searchBarBorder(),
             value = text, onValueChange = onValueChanged,
             readOnly = readOnly,
             leadingIcon = {
@@ -71,8 +79,24 @@ fun SearchBar(
                 unfocusedIndicatorColor = Color.Transparent
             ),
             textStyle = MaterialTheme.typography.bodySmall,
-            interactionSource = interactionSource
-
+            interactionSource = interactionSource,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+            keyboardActions = KeyboardActions {
+                onSearch()
+            }
         )
+    }
+}
+
+
+fun Modifier.searchBarBorder() = composed {
+    if (!isSystemInDarkTheme()) {
+        border(
+            width = 1.dp,
+            color = Color.Black,
+            shape = MaterialTheme.shapes.medium
+        )
+    } else {
+        this
     }
 }

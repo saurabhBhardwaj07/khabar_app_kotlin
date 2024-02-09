@@ -2,9 +2,7 @@ package com.saurabh.mynews.data.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.saurabh.mynews.data.remote.dto.NewsApi
 import com.saurabh.mynews.domain.model.Article
-import javax.xml.transform.Source
 
 class NewsPagingSource (
     private val newsApi: NewsApi,

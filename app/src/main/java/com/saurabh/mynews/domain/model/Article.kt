@@ -1,5 +1,11 @@
 package com.saurabh.mynews.domain.model
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
+@Entity
 data class Article(
     var author: String?,
     var content: String?,
@@ -7,11 +13,12 @@ data class Article(
     var publishedAt: String?,
     var source: Source?,
     var title: String?,
-    var url: String?,
+    @PrimaryKey var url: String,
     var urlToImage: String?
-) {
-    data class Source(
-        var id: String?,
-        var name: String?
-    )
-}
+) : Parcelable
+
+@Parcelize
+data class Source(
+    var id: String?,
+    var name: String?
+) : Parcelable
